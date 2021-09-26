@@ -11,22 +11,42 @@ import AVFoundation
 
 struct LessonUrl {
     let level: Int
-    let lesson: Int
+//    let lesson: Int
     let url: String
-    let duration: Double
+//    let duration: Double //DELETE
 }
 
 let lessons = [
-    LessonUrl(level: 01, lesson: 01, url: "https://englishforlesson.space//Italian/level1/1.mp3", duration: 1653),
-    LessonUrl(level: 01, lesson: 02, url: "https://englishforlesson.space//Italian/level1/2.mp3", duration: 1668),
-    LessonUrl(level: 01, lesson: 03, url: "https://englishforlesson.space//Italian/level1/3.mp3", duration: 1689),
-    LessonUrl(level: 01, lesson: 04, url: "https://englishforlesson.space//Italian/level1/4.mp3", duration: 1721),
-    LessonUrl(level: 01, lesson: 05, url: "https://englishforlesson.space//Italian/level1/5.mp3", duration: 1770),
-    LessonUrl(level: 01, lesson: 06, url: "https://englishforlesson.space//Italian/level1/6.mp3", duration: 1719),
-    LessonUrl(level: 01, lesson: 07, url: "https://englishforlesson.space//Italian/level1/7.mp3", duration: 1707),
-    LessonUrl(level: 01, lesson: 08, url: "https://englishforlesson.space//Italian/level1/8.mp3", duration: 1692),
-    LessonUrl(level: 01, lesson: 09, url: "https://englishforlesson.space//Italian/level1/9.mp3", duration: 1790),
-    LessonUrl(level: 01, lesson: 10, url: "https://englishforlesson.space//Italian/level1/10.mp3", duration: 1705)
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/1.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/2.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/3.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/4.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/5.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/6.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/7.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/8.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/9.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/10.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/11.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/12.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/13.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/14.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/15.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/16.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/17.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/18.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/19.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/20.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/21.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/22.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/23.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/24.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/25.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/26.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/27.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/28.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/29.mp3"),
+    LessonUrl(level: 01, url: "https://englishforlesson.space//Italian/level1/30.mp3")
 ]
 
 //class LessonItem {

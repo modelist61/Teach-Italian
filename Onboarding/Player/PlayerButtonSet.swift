@@ -13,7 +13,6 @@ struct PlayerButtonSet: View {
 //    let destination: Content
     let changeButton: Bool
     let player: AVPlayer
-    @ObservedObject var progress: CurrentProgress
     @GestureState var longPress = false
     @State private var timer: Timer?
     @State private var isLongPressing = false
@@ -21,14 +20,6 @@ struct PlayerButtonSet: View {
     
     var body: some View {
         HStack(spacing: 36) {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 7)
-//                    .frame(width: 33, height: 33)
-//                    .foregroundColor(.white)
-//                Image(systemName: "list.bullet")
-//                    .foregroundColor(Color("playButtonColor"))
-//            }.opacity(0.0)
-            
             HStack(spacing: 40) {
                 Button(action: {
                     if isLongPressing {
@@ -98,19 +89,6 @@ struct PlayerButtonSet: View {
             }
             .foregroundColor(.white)
             
-//
-//            NavigationLink(
-//                destination: LevelProgressView(progress: progress),
-//                label: {
-//                    ZStack {
-//                        RoundedRectangle(cornerRadius: 7)
-//                            .frame(width: 33, height: 33)
-//                            .foregroundColor(.white)
-//                        Image(systemName: "list.bullet")
-//                            .foregroundColor(Color("playButtonColor"))
-//                    }
-//                })
-            
             //SHOW SHEET VIEW
 //            .onTapGesture {
 //                showingSheet.toggle()
@@ -138,7 +116,7 @@ struct PlayerButtonSet_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color("onboardingBackgroundColor").ignoresSafeArea()
-            PlayerButtonSet(changeButton: false, player: AVPlayer(), progress: CurrentProgress(lessons: lessons), isPlaing: .constant(true))
+            PlayerButtonSet(changeButton: false, player: AVPlayer(), isPlaing: .constant(true))
         }
     }
 }

@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct CustomToolBar: View {
+    
+    @State private var activeLink = false
+    
     var body: some View {
+        
+        
         HStack {
             Image("listImg")
                 .renderingMode(.template)
@@ -22,14 +27,19 @@ struct CustomToolBar: View {
             Spacer()
             NavigationLink(
                 destination: SettingsView(),
+                isActive: $activeLink,
                 label: {
                     Image(systemName: "gearshape")
                         .resizable()
                         .frame(width: 32, height: 32)
                         .foregroundColor(.white)
+                        .onTapGesture {
+                            activeLink.toggle()
+                            print("TAP settings")
+                        }
                 })
         }.frame(width: UIScreen.main.bounds.width - 32)
-        
+           
     }
 }
 
@@ -48,7 +58,8 @@ struct CustomToolBar_Previews: PreviewProvider {
 
 struct CustomChildToolBar: View {
     
-    @Environment(\.presentationMode) var presentationMode
+//    @Environment (\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentation
     
     let text: String
     var body: some View {
@@ -62,7 +73,7 @@ struct CustomChildToolBar: View {
             }.frame(width: 70, alignment: .leading)
             .foregroundColor(.white)
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    presentation.wrappedValue.dismiss()
                 }
             Spacer()
             Text(text)
@@ -86,4 +97,46 @@ struct CustomChildToolBar_Previews: PreviewProvider {
             }
         }
     }
+}
+
+
+struct NavigationBarModifier: ViewModifier {
+        
+    var backgroundColor: UIColor?
+    
+    init( backgroundColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .clear
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().compactAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        UINavigationBar.appearance().tintColor = .white
+
+    }
+    
+    func body(content: Content) -> some View {
+        ZStack{
+            content
+            VStack {
+                GeometryReader { geometry in
+                    Color(self.backgroundColor ?? .clear)
+                        .frame(height: geometry.safeAreaInsets.top)
+                        .edgesIgnoringSafeArea(.top)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
+    }
+
 }

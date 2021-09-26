@@ -7,46 +7,103 @@
 
 import Foundation
 import AVFoundation
-//import Combine
+import Combine
 
-struct AudioPlayer {
-    let player = AVPlayer()
-    let item: AVPlayerItem
-    let savingTime: Double
-    
-    
-}
+//class AudioPlayer {
+//    internal init(item: AVPlayerItem, durationObserver: PlayerDurationObserver) {
+//        self.item = item
+//        self.durationObserver = durationObserver
+//    }
+//    
+////    let player: AVPlayer
+//    let item: AVPlayerItem
+//    let durationObserver: PlayerDurationObserver
+//    
+//    
+//}
 
 final class CurrentProgress: ObservableObject {
     let lessonList: [LessonUrl]
     let player = AVPlayer()
-
+    
     @Published var currentProgressSeconds: [Double]
     @Published var savingProgressPersent: [Int]
-    @Published var allLessonsDuration: [Double] = []
-//    @Published var currentSecondItem = 0.0
-    
-//    init(secondsArray: [Double], percentArray: [Int]) {
-//        self.currentProgressSeconds = secondsArray
-//        self.savingProgressPersent = percentArray
-//    }
+    @Published var allLessonsDuration: [Double]
+    @Published var allLessonsItem: [AVPlayerItem] = []
     
     init(lessons: [LessonUrl]) {
         self.lessonList = lessons
         self.currentProgressSeconds = Array(repeating: 0, count: lessonList.count)
-        self.savingProgressPersent = Array(repeating: 0, count: lessons.count)
+        self.savingProgressPersent = Array(repeating: 0, count: lessonList.count)
+        self.allLessonsDuration = Array(repeating: 0, count: lessonList.count)
+    }
+    
+    func checItemUrl() {
+        var playerArray: [AVPlayerItem] = []
+        
+        for index in lessonList.indices {
+            guard let url = URL(string: lessonList[index].url) else { return }
+            let playerItem = AVPlayerItem(url: url)
+            playerArray.append(playerItem)
+//            print("CHECK ITEMS \(index) \(url)")
+            
+        }
+        allLessonsItem = playerArray
+//        print("itemsArray \(playerArray)")
+    }
+    
+    func fetchDurations() {
+        DispatchQueue.global(qos: .utility).async {
+        if UserDefaults.standard.array(forKey: "fetchDuration") == nil {
+            var tempDuration: [Double] = []
+            for itemLesson in self.allLessonsItem {
+                if itemLesson.status != .failed {
+                    let duration = itemLesson.asset.duration.seconds
+                    tempDuration.append(duration)
+                    print("PreDuration = \(duration.rounded()) isMainTher? \(Thread.isMainThread)")
+                }
+            }
+            UserDefaults.standard.set(tempDuration, forKey: "fetchDuration")
+            DispatchQueue.main.async {
+                self.allLessonsDuration = tempDuration
+            }
+        } else {
+            guard let fetch = UserDefaults.standard.array(forKey: "fetchDuration") else { return }
+            DispatchQueue.main.async {
+                self.allLessonsDuration = fetch as! [Double]
+//                print("CHECK MAIN \(Thread.isMainThread)")
+                print("load fetchDuration from UD \(self.allLessonsDuration)")
+            }
+        }
+        }
     }
     
     func calcAverageLevelPercent() -> Int {
         savingProgressPersent.reduce(0, +) / savingProgressPersent.count
     }
     
-    func refreshProgress(index: Int) {
-        savingProgressPersent[index] = calcCurrentPersent(seconds: currentProgressSeconds[index], index: index)
-    }
     
-    func updateSaving() {
-        currentProgressSeconds = udCheckIsNil(udKey: "progress")
+    
+    func updateSaving(udKey: String) {
+            self.currentProgressSeconds = self.udCheckIsNil(udKey: udKey)
+        
+//        DispatchQueue.global(qos: .userInteractive).async {
+//        let defaults = UserDefaults.standard
+//        if(defaults.array(forKey: "progress") != nil) {
+//            DispatchQueue.main.async {
+//                self.currentProgressSeconds = defaults.array(forKey: "progress") as! [Double]
+//            }
+//        } else {
+//            //MAKE DEFAULT 0.0 ARRAY
+//            var seconds: [Double] = []
+//            for _ in lessons.indices {
+//                seconds.append(0.0)
+//            }
+//            DispatchQueue.main.async {
+//                self.currentProgressSeconds = seconds
+//            }
+//        }
+//        }
     }
     
     func writeSavingToUD() {
@@ -61,27 +118,27 @@ final class CurrentProgress: ObservableObject {
         return summ / array.count
     }
     
-    func updateDuration() {
-        for lesson in lessonList {
-            allLessonsDuration.append(lesson.duration)
+    private func udCheckIsNil(udKey: String) -> [Double] {
+        let defaults = UserDefaults.standard
+        if(defaults.array(forKey: udKey) != nil) {
+                return defaults.array(forKey: udKey) as! [Double]
+        } else {
+            //MAKE DEFAULT 0.0 ARRAY
+            var seconds: [Double] = []
+            for _ in lessons.indices {
+                seconds.append(0.0)
+            }
+                return seconds
         }
     }
     
-    private func udCheckIsNil(udKey: String) -> [Double] {
-            let defaults = UserDefaults.standard
-            if(defaults.array(forKey: udKey) != nil) {
-                return defaults.array(forKey: udKey) as! [Double]
-            } else {
-                //MAKE DEFAULT 0.0 ARRAY
-                var seconds: [Double] = []
-                for _ in lessons.indices {
-                    seconds.append(0.0)
-                }
-                return seconds
+    func refreshProgress(index: Int) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let fetch = UserDefaults.standard.array(forKey: "fetchDuration") else { return }
+            let percent = Int((self.currentProgressSeconds[index] / (Double(fetch[index] as! Double) / 100)).rounded())
+            DispatchQueue.main.async {
+                self.savingProgressPersent[index] = percent
             }
-    }
-    
-    private func calcCurrentPersent(seconds: Double, index: Int) -> Int {
-        Int((seconds / (Double(lessonList[index].duration) / 100)).rounded())
+        }
     }
 }

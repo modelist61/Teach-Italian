@@ -11,12 +11,9 @@ import AVFoundation
 struct PlayerPlayPreview: View {
     
     @Binding var isPlaing: Bool
-//    @Binding var animationAmount: CGFloat
-//    @State var isPlaing2 = false
     @State private var animationAmount: CGFloat = 1.0
     
     private let animation = Animation.spring(response: 0.4, dampingFraction: 0.5, blendDuration: 0.2)
-    
     let player: AVPlayer
     
     var body: some View {

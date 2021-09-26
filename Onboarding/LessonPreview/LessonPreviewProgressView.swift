@@ -10,8 +10,8 @@ import SwiftUI
 struct LessonPreviewProgressView: View {
     
     let index: Int
-    @ObservedObject var progress: CurrentProgress
-
+    @EnvironmentObject var progress: CurrentProgress
+    
     var body: some View {
         let intProgress = progress.savingProgressPersent[index]
         

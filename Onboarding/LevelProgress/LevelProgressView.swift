@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LevelProgressView: View {
     
-    @ObservedObject var progress: CurrentProgress
+    @EnvironmentObject var progress: CurrentProgress
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -29,23 +29,17 @@ struct LevelProgressView: View {
                 CircleProgress(progress: progress.calcAverageLevelPercent())
             }.frame(width: UIScreen.main.bounds.width - 32)
         }
-        .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            CustomChildToolBar(text: "difficulty level")
-//                .offset(x: 3, y: 0)
-        })
-        .onAppear {
-            print("ONAPPEAR LevelsProgress")
-        }
-        .onDisappear {
-            print("ONDISAPPEAR LevelsProgress")
-        }
+//        .navigationBarBackButtonHidden(true)
+//        .toolbar(content: {
+//            CustomChildToolBar(text: "difficulty level")
+////                .offset(x: 3, y: 0)
+//        })
 }
 }
 
 struct LevelProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelProgressView(progress: CurrentProgress(lessons: lessons))
+        LevelProgressView()
     }
 }
 

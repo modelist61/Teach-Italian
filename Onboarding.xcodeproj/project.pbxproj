@@ -19,6 +19,7 @@
 		7F76FDDD26E7DF1F00771170 /* LessonUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76FDDC26E7DF1F00771170 /* LessonUrl.swift */; };
 		7F76FDE126E8B17700771170 /* LessonPreviewPicSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76FDE026E8B17700771170 /* LessonPreviewPicSmall.swift */; };
 		7F76FDE526E8B26B00771170 /* LessonPreviewProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76FDE426E8B26B00771170 /* LessonPreviewProgressView.swift */; };
+		7F833C8B26FF07C200190D46 /* LunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F833C8A26FF07C200190D46 /* LunchScreen.swift */; };
 		7F8863B126EB7B5500545120 /* SaveProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8863B026EB7B5500545120 /* SaveProgress.swift */; };
 		7F8BE35A26ED38CF00A92D6B /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8BE35926ED38CE00A92D6B /* SheetView.swift */; };
 		7F8BE35C26EF3DF300A92D6B /* CustomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8BE35B26EF3DF300A92D6B /* CustomToolBar.swift */; };
@@ -27,6 +28,7 @@
 		7F8BE36226EF405800A92D6B /* PlayerPlayPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8BE36126EF405800A92D6B /* PlayerPlayPreview.swift */; };
 		7FA98D9F26EF85FE00132F3C /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7FA98D9E26EF85FE00132F3C /* 1.mp3 */; };
 		7FA98DA226EF8C0600132F3C /* PlayerWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA98DA126EF8C0500132F3C /* PlayerWithTextView.swift */; };
+		7FC3DFB526F9F20B00EBB337 /* LevelProgressView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3DFB426F9F20B00EBB337 /* LevelProgressView2.swift */; };
 		7FD2187226D8EC9700C94BF4 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2187126D8EC9700C94BF4 /* OnboardingApp.swift */; };
 		7FD2187426D8EC9700C94BF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2187326D8EC9700C94BF4 /* ContentView.swift */; };
 		7FD2187626D8EC9F00C94BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FD2187526D8EC9F00C94BF4 /* Assets.xcassets */; };
@@ -60,6 +62,7 @@
 		7F76FDDC26E7DF1F00771170 /* LessonUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonUrl.swift; sourceTree = "<group>"; };
 		7F76FDE026E8B17700771170 /* LessonPreviewPicSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPreviewPicSmall.swift; sourceTree = "<group>"; };
 		7F76FDE426E8B26B00771170 /* LessonPreviewProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPreviewProgressView.swift; sourceTree = "<group>"; };
+		7F833C8A26FF07C200190D46 /* LunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreen.swift; sourceTree = "<group>"; };
 		7F8863B026EB7B5500545120 /* SaveProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProgress.swift; sourceTree = "<group>"; };
 		7F8BE35926ED38CE00A92D6B /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		7F8BE35B26EF3DF300A92D6B /* CustomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolBar.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		7F8BE36126EF405800A92D6B /* PlayerPlayPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlayPreview.swift; sourceTree = "<group>"; };
 		7FA98D9E26EF85FE00132F3C /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
 		7FA98DA126EF8C0500132F3C /* PlayerWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWithTextView.swift; sourceTree = "<group>"; };
+		7FC3DFB426F9F20B00EBB337 /* LevelProgressView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelProgressView2.swift; sourceTree = "<group>"; };
 		7FD2186E26D8EC9700C94BF4 /* Onboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD2187126D8EC9700C94BF4 /* OnboardingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
 		7FD2187326D8EC9700C94BF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				7F6E266E26F500FF002C077A /* LevelProgressView.swift */,
+				7FC3DFB426F9F20B00EBB337 /* LevelProgressView2.swift */,
 			);
 			path = LevelProgress;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 			children = (
 				7FD2187126D8EC9700C94BF4 /* OnboardingApp.swift */,
 				7FD2187326D8EC9700C94BF4 /* ContentView.swift */,
+				7F833C8A26FF07C200190D46 /* LunchScreen.swift */,
 				7F76FDDC26E7DF1F00771170 /* LessonUrl.swift */,
 				7F8863B026EB7B5500545120 /* SaveProgress.swift */,
 				7FA98D9D26EF856C00132F3C /* TEMP FILES */,
@@ -330,6 +336,8 @@
 				7F76FDD826E6252500771170 /* PlayerView.swift in Sources */,
 				7FFFB64026E0EE3F00BEB200 /* LessonPreview.swift in Sources */,
 				7F16BAE726D94109006BB482 /* OnBoardTabView.swift in Sources */,
+				7F833C8B26FF07C200190D46 /* LunchScreen.swift in Sources */,
+				7FC3DFB526F9F20B00EBB337 /* LevelProgressView2.swift in Sources */,
 				7FD2187226D8EC9700C94BF4 /* OnboardingApp.swift in Sources */,
 				7F8BE35A26ED38CF00A92D6B /* SheetView.swift in Sources */,
 				7FFFB62B26DFD9D900BEB200 /* RatingHeadText.swift in Sources */,
@@ -405,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -460,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -475,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Onboarding/Preview Content\"";
 				DEVELOPMENT_TEAM = WM9XM3NC73;
@@ -497,6 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Onboarding/Preview Content\"";
 				DEVELOPMENT_TEAM = WM9XM3NC73;

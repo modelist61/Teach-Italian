@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 @main
 struct OnboardingApp: App {
-    
+    @StateObject private var progress = CurrentProgress(lessons: lessons)
+   
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(progress)
+                .onAppear {
+                        progress.checItemUrl()
+                        progress.updateSaving(udKey: "progress")
+                        progress.fetchDurations()
+                    
+                }
         }
     }
 }

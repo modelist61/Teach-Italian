@@ -10,13 +10,12 @@ import SwiftUI
 struct LessonPreview: View {
     
     let index: Int
-    @ObservedObject var progress: CurrentProgress
+    @EnvironmentObject var progress: CurrentProgress
     
     var body: some View {
-        
-        let durationMin = Utility.formatSecondsToHMS(lessons[index].duration)
+        let durationMin = Utility.formatSecondsToHMS(progress.allLessonsDuration[index])
             .components(separatedBy: ":")[0]
-        let durationSec = Utility.formatSecondsToHMS(lessons[index].duration)
+        let durationSec = Utility.formatSecondsToHMS(progress.allLessonsDuration[index])
             .components(separatedBy: ":")[1]
         
         ZStack {
@@ -30,7 +29,7 @@ struct LessonPreview: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("Lezione 0\(lessons[index].lesson)")
+                        Text("Lezione \(index + 1)")
                             .font(Font(UIFont(name: "SFUIDisplay-Medium", size: 18)!))
                             .foregroundColor(.black)
                         
@@ -45,7 +44,7 @@ struct LessonPreview: View {
                         }
                     }
                     
-                    LessonPreviewProgressView(index: index, progress: progress)
+                    LessonPreviewProgressView(index: index)
                     
                 }.frame(width: 201, height: 118)
             }.frame(width: 336, height: 118)
@@ -59,7 +58,7 @@ struct LessonPreview: View {
 
 struct LessonPreview_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPreview(index: 1, progress: CurrentProgress(lessons: lessons))
+        LessonPreview(index: 1)
     }
 }
 

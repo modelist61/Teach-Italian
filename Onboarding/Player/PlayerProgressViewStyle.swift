@@ -23,7 +23,7 @@ struct PlayerProgressViewStyle: ProgressViewStyle {
                         .offset(x: -10)
                     Spacer()
                     Text("\(Utility.formatSecondsToHMS(duration))")
-                }.frame(width: 335)
+                }.frame(width: 355)
                 .font(Font(UIFont(name: "SFUIDisplay-Regular", size: 14)!))
                 .foregroundColor(.white.opacity(0.6))
                 .offset(y: 20)
@@ -37,13 +37,13 @@ struct PlayerProgressViewStyle: ProgressViewStyle {
                     Circle()
                         .frame(width: 14, height: 14, alignment: .trailing)
                         .foregroundColor(.white)
+                        .padding(.leading, -10)
                     
-                    Text("")
-                        .font(Font(UIFont(name: "SFUIDisplay-Regular", size: 14)!))
-                        .foregroundColor(.white)
-                        .offset(y: 20)
+//                    Text("")
+//                        .font(Font(UIFont(name: "SFUIDisplay-Regular", size: 14)!))
+//                        .foregroundColor(.white)
+//                        .offset(y: 20)
                 }
-                .offset(x: -20)
             }
         }
     }

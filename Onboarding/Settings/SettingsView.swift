@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @State var onbooardingOn = false
+    
     var body: some View {
         ZStack(alignment: .top) {
                 Color("onboardingBackgroundColor").ignoresSafeArea()
@@ -29,11 +32,18 @@ struct SettingsView: View {
                     SettingsButton(text: "Restore purchase", systemImage: "creditcard")
 
                 }
+//                VStack {
+//                    Toggle(isOn: $onbooardingOn ) {
+//                        Text("turn on Onboarding at next lunch")
+//                    }
+//                }.onDisappear {
+//                    
+//                }
             }
         }.navigationBarBackButtonHidden(true)
-        .toolbar(content: {
+        .toolbar {
             CustomChildToolBar(text: "Impostazioni")
-        })
+        }
     }
 }
 

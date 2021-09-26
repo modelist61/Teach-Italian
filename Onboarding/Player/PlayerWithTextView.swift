@@ -15,8 +15,10 @@ struct PlayerWithTextView: View {
     let index: Int
     let currentUrl: URL
     let player: AVPlayer//
+//    let player = AVPlayer()
 
-    @ObservedObject var progress: CurrentProgress
+//    @ObservedObject var progress: CurrentProgress
+    @EnvironmentObject var progress: CurrentProgress
     @State private var isPlaing = false
     @Binding var currentSeconds: Double
     
@@ -26,13 +28,13 @@ struct PlayerWithTextView: View {
     @State var animate = false
     
     var body: some View {
+//        let player = progress.player
         
         ZStack {
             Color("onboardingBackgroundColor").ignoresSafeArea()
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 30)
-                        
                         .foregroundColor(.white.opacity(0.2))
                     Text("""
                         Ascolta questa conversazione.
@@ -50,19 +52,20 @@ struct PlayerWithTextView: View {
                         .font(Font(UIFont(name: "SFUIDisplay-Regular", size: 20)!))
                         .foregroundColor(.white)
                         .padding()
+                    
                 }.frame(width: 347, height: 616)
                 
                 AudioPlayerControlsView(player: player,
                                         timeObserver: PlayerTimeObserver(player: player),
                                         durationObserver: PlayerDurationObserver(player: player),
                                         itemObserver: PlayerItemObserver(player: player),
-                                        durationPreLoad: progress.allLessonsDuration[index])
+                                        durationPreLoad: progress.allLessonsDuration[index],
+                                        currentTimeFromUD: currentSeconds)
                     .animation(animation, value: animate)
                 
                 HStack {
                     PlayerButtonSet(changeButton: false,
                                     player: player,
-                                    progress: progress,
                                     isPlaing: $isPlaing)
                         .padding(.vertical, 30)
                 }
@@ -71,9 +74,9 @@ struct PlayerWithTextView: View {
             
         }
         .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            CustomChildToolBar(text: "Lezione 1")
-        })
+        .toolbar {
+            CustomChildToolBar(text: "Lezione \(index + 1)")
+        }
         .onReceive(player.currentItem.publisher) { player2 in
             currentSeconds = player2.currentTime().seconds
         }
@@ -87,7 +90,6 @@ struct PlayerWithTextView: View {
     
     private func onDisappear() {
         print("ONDISAPPEAR PlayerTextView")
-
         player.pause()
     }
     
@@ -96,9 +98,9 @@ struct PlayerWithTextView: View {
         player.pause()
         DispatchQueue.main.async {
             animate = true
-        let playerItem = AVPlayerItem(url: currentUrl)
-        player.replaceCurrentItem(with: playerItem)
-        player.seek(to: CMTime(seconds: currentSeconds, preferredTimescale: 600))
+            let playerItem = AVPlayerItem(url: currentUrl)
+            player.replaceCurrentItem(with: playerItem)
+            player.seek(to: CMTime(seconds: currentSeconds, preferredTimescale: 600))
         }
     }
 
@@ -106,6 +108,6 @@ struct PlayerWithTextView: View {
 
 struct PlayerWithTextView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerWithTextView(index: 0, currentUrl: URL(string: "https://englishforlesson.space//Italian/level1/1.mp3")!, player: AVPlayer(), progress: CurrentProgress(lessons: lessons), currentSeconds: .constant(200))
+        PlayerWithTextView(index: 0, currentUrl: URL(string: "https://englishforlesson.space//Italian/level1/1.mp3")!, player: AVPlayer(), currentSeconds: .constant(200))
     }
 }
