@@ -32,13 +32,10 @@ struct RaitingView: View {
                         
                     }.frame(width: 335, height: 518, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }.padding(.top, 50)
-                
                 Spacer()
                 RaitingContinueButton(dismiss: $dismiss)
             }
         }
-        
-        
     }
     
 }

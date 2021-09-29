@@ -20,7 +20,7 @@ struct HomeView: View {
             ZStack {
                 Color("onboardingBackgroundColor").ignoresSafeArea()
                 ScrollView {
-                    ForEach(lessons.indices, id: \.self) { index in
+                    ForEach(progress.lessonList.indices, id: \.self) { index in
                         NavigationLink(
                             destination: PlayerView(index: index),
                             label: {
@@ -30,11 +30,17 @@ struct HomeView: View {
                             })
                     }
                 }
+//                ProgressView()
+//                    .progressViewStyle(CircularProgressViewStyle())
+//                    .scaleEffect(5)
+                    
+                
                 BottomLinerGradient()
-            }.navigationBarTitleDisplayMode(.automatic)
+            }.navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     CustomToolBar()
                 }
+//                .navigationBarHidden(true)
         }
 //        .navigationBarColor(UIColor.orange)
 

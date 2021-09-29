@@ -29,19 +29,38 @@ struct LessonPreview: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("Lezione \(index + 1)")
+                        Text("Lezione ".localized() + String(index + 1))
                             .font(Font(UIFont(name: "SFUIDisplay-Medium", size: 18)!))
                             .foregroundColor(.black)
                         
-                        Text("Principiante")
+                        Text("Principiante".localized())
                             .font(Font(UIFont(name: "SFUIDisplay-Light", size: 14)!))
                             .foregroundColor(Color("lessonNameColor"))
                         
-                        HStack {
-                            Text("\(Image(systemName: "alarm.fill")) \(durationMin) min \(durationSec) sec")
-                                .font(Font(UIFont(name: "SFUIDisplay-Medium", size: 12)!))
-                                .foregroundColor(Color("lessonTimeColor"))
-                        }
+                        HStack(spacing: 2) {
+//                            Text("\(Image(systemName: "alarm.fill")) \(durationMin) min \(durationSec) sec")
+//                                .font(Font(UIFont(name: "SFUIDisplay-Medium", size: 12)!))
+//                                .foregroundColor(Color("lessonTimeColor"))
+                            Text("\(Image(systemName: "alarm.fill")) ")
+                            if progress.allLessonsDuration[index] == 0 {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .frame(height: 12)
+                            } else {
+                                Text(durationMin)
+                            }
+                            Text("min ".localized())
+                            if progress.allLessonsDuration[index] == 0 {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .frame(height: 12)
+                            } else {
+                                Text(durationSec)
+                            }
+                            Text("sec".localized())
+                                
+                        }.font(Font(UIFont(name: "SFUIDisplay-Medium", size: 12)!))
+                            .foregroundColor(Color("lessonTimeColor"))
                     }
                     
                     LessonPreviewProgressView(index: index)

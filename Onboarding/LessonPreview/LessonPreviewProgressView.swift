@@ -16,7 +16,8 @@ struct LessonPreviewProgressView: View {
         let intProgress = progress.savingProgressPersent[index]
         
         VStack(alignment: .leading, spacing: 8) {
-            Text("\(intProgress) % progresso")
+//            Text("\(intProgress) % progresso")
+            Text(String(intProgress) + " % progresso".localized())
                 .font(Font(UIFont(name: "SFUIDisplay-Regular", size: 14)!))
                 .foregroundColor(Color("lessonPercentColor"))
                 .padding(.bottom, -5)

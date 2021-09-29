@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F134D962701FEAE00F263D6 /* LocalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F134D952701FEAE00F263D6 /* LocalizeExtension.swift */; };
+		7F134D992702002100F263D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F134D9B2702002100F263D6 /* Localizable.strings */; };
 		7F16BADE26D907BD006BB482 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F16BADD26D907BD006BB482 /* SF-Pro-Rounded-Semibold.otf */; };
 		7F16BAE126D92141006BB482 /* OnBoardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F16BAE026D92141006BB482 /* OnBoardPage.swift */; };
 		7F16BAE526D9223A006BB482 /* OnBoardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F16BAE426D9223A006BB482 /* OnBoardSet.swift */; };
@@ -50,6 +52,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F134D952701FEAE00F263D6 /* LocalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeExtension.swift; sourceTree = "<group>"; };
+		7F134D9A2702002100F263D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F134D9C2702003000F263D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F134D9D2702048C00F263D6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F16BADD26D907BD006BB482 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		7F16BAE026D92141006BB482 /* OnBoardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPage.swift; sourceTree = "<group>"; };
 		7F16BAE426D9223A006BB482 /* OnBoardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardSet.swift; sourceTree = "<group>"; };
@@ -105,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F134D942701FE7F00F263D6 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				7F134D952701FEAE00F263D6 /* LocalizeExtension.swift */,
+				7F134D9B2702002100F263D6 /* Localizable.strings */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
 		7F16BADC26D90784006BB482 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +218,7 @@
 				7F833C8A26FF07C200190D46 /* LunchScreen.swift */,
 				7F76FDDC26E7DF1F00771170 /* LessonUrl.swift */,
 				7F8863B026EB7B5500545120 /* SaveProgress.swift */,
+				7F134D942701FE7F00F263D6 /* Localize */,
 				7FA98D9D26EF856C00132F3C /* TEMP FILES */,
 				7F6E266D26F500E7002C077A /* LevelProgress */,
 				7F66CC4226F3A12F00BF9A86 /* Settings */,
@@ -290,6 +306,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				it,
 			);
 			mainGroup = 7FD2186526D8EC9600C94BF4;
 			productRefGroup = 7FD2186F26D8EC9700C94BF4 /* Products */;
@@ -311,6 +329,7 @@
 				7FA98D9F26EF85FE00132F3C /* 1.mp3 in Resources */,
 				7FD2187926D8EC9F00C94BF4 /* Preview Assets.xcassets in Resources */,
 				7F16BADE26D907BD006BB482 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				7F134D992702002100F263D6 /* Localizable.strings in Resources */,
 				7FFFB63E26E0DE1100BEB200 /* SFUIDisplay-Regular.otf in Resources */,
 				7FD2187626D8EC9F00C94BF4 /* Assets.xcassets in Resources */,
 			);
@@ -335,6 +354,7 @@
 				7FFFB63026E0BEFC00BEB200 /* HomeView.swift in Sources */,
 				7F76FDD826E6252500771170 /* PlayerView.swift in Sources */,
 				7FFFB64026E0EE3F00BEB200 /* LessonPreview.swift in Sources */,
+				7F134D962701FEAE00F263D6 /* LocalizeExtension.swift in Sources */,
 				7F16BAE726D94109006BB482 /* OnBoardTabView.swift in Sources */,
 				7F833C8B26FF07C200190D46 /* LunchScreen.swift in Sources */,
 				7FC3DFB526F9F20B00EBB337 /* LevelProgressView2.swift in Sources */,
@@ -360,6 +380,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7F134D9B2702002100F263D6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F134D9A2702002100F263D6 /* ru */,
+				7F134D9C2702003000F263D6 /* en */,
+				7F134D9D2702048C00F263D6 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7FD2187B26D8EC9F00C94BF4 /* Debug */ = {

@@ -21,7 +21,7 @@ struct CustomToolBar: View {
                 .frame(width: 32, height: 32)
                 .foregroundColor(.clear)
             Spacer()
-            Text("Livello 1")
+            Text("Livello 1".localized())
                 .font(Font(UIFont(name: "SFProRounded-Semibold", size: 24)!))
                 .foregroundColor(.white)
             Spacer()

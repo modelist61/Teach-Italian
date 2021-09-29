@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SettingsView: View {
     
@@ -23,7 +24,17 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     SettingsButtonHeader(text: "Funzioni dell'applicazione")
                     SettingsButton(text: "Rate app", systemImage: "star")
+                        .onTapGesture {
+                            if let windowScene = UIApplication.shared.windows.first?.windowScene { SKStoreReviewController.requestReview(in: windowScene) }
+                        }
                     SettingsButton(text: "Contact the developer", systemImage: "exclamationmark.triangle")
+                        .onTapGesture {
+                            let mailtoString = "mailto:nemecek@support.com".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                            let mailtoUrl = URL(string: mailtoString!)!
+                            if UIApplication.shared.canOpenURL(mailtoUrl) {
+                                    UIApplication.shared.open(mailtoUrl, options: [:])
+                            }
+                        }
                 }
                 
                 VStack(alignment: .leading) {

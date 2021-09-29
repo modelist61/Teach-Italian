@@ -59,10 +59,16 @@ final class CurrentProgress: ObservableObject {
             for itemLesson in self.allLessonsItem {
                 if itemLesson.status != .failed {
                     let duration = itemLesson.asset.duration.seconds
-                    tempDuration.append(duration)
-                    print("PreDuration = \(duration.rounded()) isMainTher? \(Thread.isMainThread)")
+                    if duration < 1 {
+                        tempDuration.append(Double(1.0))
+                    } else {
+                    tempDuration.append(Double(duration))
+                    }
+                    print("PreDuration = \(duration)")
                 }
             }
+            print(tempDuration)
+            
             UserDefaults.standard.set(tempDuration, forKey: "fetchDuration")
             DispatchQueue.main.async {
                 self.allLessonsDuration = tempDuration
@@ -135,7 +141,16 @@ final class CurrentProgress: ObservableObject {
     func refreshProgress(index: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             guard let fetch = UserDefaults.standard.array(forKey: "fetchDuration") else { return }
-            let percent = Int((self.currentProgressSeconds[index] / (Double(fetch[index] as! Double) / 100)).rounded())
+//            print("fetch in calc \(fetch)")//
+//            let checkedFetch: [Double] = []
+//            for dur in fetch {
+//                if dur < 1.0 {
+//                    checkedFetch.append(Double(0.0))
+//                } else {
+//                    checkedFetch.append(Double(dur))
+//                }
+//            }
+            let percent = Int((self.currentProgressSeconds[index] / (fetch[index] as! Double / 100)).rounded())
             DispatchQueue.main.async {
                 self.savingProgressPersent[index] = percent
             }

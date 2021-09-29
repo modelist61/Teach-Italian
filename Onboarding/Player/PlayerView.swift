@@ -144,8 +144,8 @@ struct PlayerView: View {
         
         
         .sheet(isPresented: $showingSheet) {
-            //            SheetView()
-            LevelProgressView()
+                        SheetView()
+//            LevelProgressView()
         }
 //        .onReceive(player.currentItem.publisher) { player2 in
 //            currentSeconds = player2.currentTime().seconds
@@ -157,12 +157,17 @@ struct PlayerView: View {
         .onAppear {
             onAppear()
         }
+        
     }
     
     private func onDisappear() {
         print("ONDISAPPEAR PlayerView")
         isPlaing = false
-        currentSeconds = progress.player.currentItem?.currentTime().seconds ?? 0.0
+//        if !((progress.player.currentItem?.currentTime().seconds.isNaN)!) {
+            currentSeconds = progress.player.currentItem?.currentTime().seconds ?? 0.0
+//        } else {
+//            currentSeconds = 0.0
+//        }
         progress.player.pause()
         DispatchQueue.main.async {
             progress.currentProgressSeconds[index] = currentSeconds
